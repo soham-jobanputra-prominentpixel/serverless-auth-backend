@@ -13,7 +13,7 @@ export async function login(request: Request, response: Response) {
   }
 
   request.session!["userId"] = user.id;
-  response.json({ data: { user } });
+  response.json({ user });
 }
 
 export async function register(request: Request, response: Response) {
@@ -29,9 +29,9 @@ export async function register(request: Request, response: Response) {
     throw new BadRequestError("Password and Confirm-Password must match.");
   }
 
-  const user = await User.findOne({ where: { email } });
+  const existingUser = await User.findOne({ where: { email } });
 
-  if (user) {
+  if (existingUser) {
     throw new BadRequestError("Email already exists.");
   }
 

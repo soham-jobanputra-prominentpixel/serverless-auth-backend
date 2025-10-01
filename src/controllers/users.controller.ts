@@ -7,5 +7,5 @@ export async function getAllUsers(
   response: Response,
 ) {
   const users = await User.findAll();
-  response.json({ data: { users } });
+  response.json({ users });
 }
