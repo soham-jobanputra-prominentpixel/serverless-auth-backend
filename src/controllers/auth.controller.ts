@@ -38,3 +38,8 @@ export async function register(request: Request, response: Response) {
   User.create({ email, password, firstName, lastName });
   response.json({ success: true });
 }
+
+export function logout(request: Request, response: Response) {
+  request.session = null;
+  response.json({ success: true });
+}

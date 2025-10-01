@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { body } from "express-validator";
-import { login, register } from "../controllers/auth.controller.ts";
+import { login, logout, register } from "../controllers/auth.controller.ts";
 import validationMiddleware from "../common/middleware/validationMiddleware.ts";
 
 export const authRouter = Router();
@@ -21,4 +21,9 @@ authRouter.post(
   body("firstName").notEmpty().trim().isLength({ min: 2, max: 32 }),
   body("lastName").notEmpty().trim().isLength({ min: 2, max: 32 }),
   register,
+);
+
+authRouter.get(
+  "/logout",
+  logout,
 );
