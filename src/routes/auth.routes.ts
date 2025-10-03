@@ -20,6 +20,7 @@ authRouter.post(
   body("confirmPassword").notEmpty().trim().isLength({ min: 4, max: 16 }),
   body("firstName").notEmpty().trim().isLength({ min: 2, max: 32 }),
   body("lastName").notEmpty().trim().isLength({ min: 2, max: 32 }),
+  validationMiddleware,
   register,
 );
 
