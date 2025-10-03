@@ -7,10 +7,13 @@ import { sequelize } from "./src/common/config.ts";
 import { authRouter } from "./src/routes/auth.routes.ts";
 import { loggingMiddleware } from "./src/common/middleware/loggingMiddleware.ts";
 import { sessionMiddleware } from "./src/common/middleware/sessionMiddleware.ts";
+import { timeDelayMiddleware } from "./src/common/middleware/timeDelayMiddleware.ts";
 
 export const app = express();
 
 app.use(loggingMiddleware);
+
+app.use(timeDelayMiddleware)
 
 app.use(sessionMiddleware);
 
